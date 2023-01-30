@@ -144,10 +144,17 @@
             </compilerArgs>
             <annotationProcessorPaths>
               <path>
+                <!-- Error Prone itself. -->
                 <groupId>com.google.errorprone</groupId>
                 <artifactId>error_prone_core</artifactId>
                 <version>2.16</version>
               </path>
+                <!-- Error Prone Support's additional bug checkers. -->
+                <path>
+                  <groupId>tech.picnic.error-prone-support</groupId>
+                  <artifactId>error-prone-contrib</artifactId>
+                  <version>0.5.0-mock-SNAPSHOT</version>
+                </path>
             </annotationProcessorPaths>
             <!-- Fork:
 
@@ -514,7 +521,9 @@
                      be passed as part of the same <arg> as -Xplugin:ErrorProne,
                      and I gave up trying to figure out how to do that for test
                      compilation only. -->
-                <arg>-Xplugin:ErrorProne -Xep:NullArgumentForNonNullParameter:OFF</arg>
+                <!-- arg>-Xplugin:ErrorProne -Xep:NullArgumentForNonNullParameter:OFF</arg> -->
+                <arg>-Xplugin:ErrorProne -Xep:NullArgumentForNonNullParameter:OFF -Xep:ScheduledTransactionTrace:OFF -Xep:ExplicitEnumOrdering:OFF -Xep:LexicographicalAnnotationListing:OFF -Xep:LexicographicalAnnotationAttributeListing:OFF -Xep:MethodReferenceUsage:OFF</arg>
+
                 <!-- https://github.com/google/error-prone/blob/f8e33bc460be82ab22256a7ef8b979d7a2cacaba/docs/installation.md#jdk-16 -->
                 <!-- TODO(cpovirk): Use .mvn/jvm.config instead (per
                      https://errorprone.info/docs/installation#maven) if it can
@@ -531,6 +540,7 @@
                 <arg>-J--add-opens=jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED</arg>
                 <arg>-J--add-opens=jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED</arg>
               </compilerArgs>
+              <showWarnings>true</showWarnings>
             </configuration>
           </plugin>
         </plugins>
