@@ -43,7 +43,7 @@ public class ForwardingLoadingCacheTest extends TestCase {
      * type arguments. The created proxy only records calls and returns null, so
      * the type is irrelevant at runtime.
      */
-    mock = mock(LoadingCache.class);
+    mock = mock();
     forward =
         new ForwardingLoadingCache<String, Boolean>() {
           @Override

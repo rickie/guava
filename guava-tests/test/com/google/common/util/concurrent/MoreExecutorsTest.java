@@ -341,7 +341,7 @@ public class MoreExecutorsTest extends JSR166TestCase {
 
   @AndroidIncompatible // Mocking ExecutorService is forbidden there. TODO(b/218700094): Don't mock.
   public void testListeningDecorator_noWrapExecuteTask() {
-    ExecutorService delegate = mock(ExecutorService.class);
+    ExecutorService delegate = mock();
     ListeningExecutorService service = listeningDecorator(delegate);
     Runnable task =
         new Runnable() {
@@ -563,7 +563,7 @@ public class MoreExecutorsTest extends JSR166TestCase {
   @AndroidIncompatible // Mocking ExecutorService is forbidden there. TODO(b/218700094): Don't mock.
   public void testAddDelayedShutdownHook_success() throws InterruptedException {
     TestApplication application = new TestApplication();
-    ExecutorService service = mock(ExecutorService.class);
+    ExecutorService service = mock();
     application.addDelayedShutdownHook(service, 2, TimeUnit.SECONDS);
     verify(service, Mockito.never()).shutdown();
     application.shutdown();
@@ -575,7 +575,7 @@ public class MoreExecutorsTest extends JSR166TestCase {
   @AndroidIncompatible // Mocking ExecutorService is forbidden there. TODO(b/218700094): Don't mock.
   public void testAddDelayedShutdownHook_interrupted() throws InterruptedException {
     TestApplication application = new TestApplication();
-    ExecutorService service = mock(ExecutorService.class);
+    ExecutorService service = mock();
     application.addDelayedShutdownHook(service, 2, TimeUnit.SECONDS);
     when(service.awaitTermination(2, TimeUnit.SECONDS)).thenThrow(new InterruptedException());
     application.shutdown();
@@ -593,8 +593,8 @@ public class MoreExecutorsTest extends JSR166TestCase {
   @AndroidIncompatible // Mocking ExecutorService is forbidden there. TODO(b/218700094): Don't mock.
   public void testGetExitingExecutorService_executorDelegatesToOriginal() {
     TestApplication application = new TestApplication();
-    ThreadPoolExecutor executor = mock(ThreadPoolExecutor.class);
-    ThreadFactory threadFactory = mock(ThreadFactory.class);
+    ThreadPoolExecutor executor = mock();
+    ThreadFactory threadFactory = mock();
     when(executor.getThreadFactory()).thenReturn(threadFactory);
     application.getExitingExecutorService(executor).execute(EMPTY_RUNNABLE);
     verify(executor).execute(EMPTY_RUNNABLE);
@@ -603,8 +603,8 @@ public class MoreExecutorsTest extends JSR166TestCase {
   @AndroidIncompatible // Mocking ExecutorService is forbidden there. TODO(b/218700094): Don't mock.
   public void testGetExitingExecutorService_shutdownHookRegistered() throws InterruptedException {
     TestApplication application = new TestApplication();
-    ThreadPoolExecutor executor = mock(ThreadPoolExecutor.class);
-    ThreadFactory threadFactory = mock(ThreadFactory.class);
+    ThreadPoolExecutor executor = mock();
+    ThreadFactory threadFactory = mock();
     when(executor.getThreadFactory()).thenReturn(threadFactory);
     ExecutorService unused = application.getExitingExecutorService(executor);
     application.shutdown();
@@ -621,8 +621,8 @@ public class MoreExecutorsTest extends JSR166TestCase {
   @AndroidIncompatible // Mocking ExecutorService is forbidden there. TODO(b/218700094): Don't mock.
   public void testGetExitingScheduledExecutorService_executorDelegatesToOriginal() {
     TestApplication application = new TestApplication();
-    ScheduledThreadPoolExecutor executor = mock(ScheduledThreadPoolExecutor.class);
-    ThreadFactory threadFactory = mock(ThreadFactory.class);
+    ScheduledThreadPoolExecutor executor = mock();
+    ThreadFactory threadFactory = mock();
     when(executor.getThreadFactory()).thenReturn(threadFactory);
     application.getExitingScheduledExecutorService(executor).execute(EMPTY_RUNNABLE);
     verify(executor).execute(EMPTY_RUNNABLE);
@@ -632,8 +632,8 @@ public class MoreExecutorsTest extends JSR166TestCase {
   public void testGetScheduledExitingExecutorService_shutdownHookRegistered()
       throws InterruptedException {
     TestApplication application = new TestApplication();
-    ScheduledThreadPoolExecutor executor = mock(ScheduledThreadPoolExecutor.class);
-    ThreadFactory threadFactory = mock(ThreadFactory.class);
+    ScheduledThreadPoolExecutor executor = mock();
+    ThreadFactory threadFactory = mock();
     when(executor.getThreadFactory()).thenReturn(threadFactory);
     ScheduledExecutorService unused = application.getExitingScheduledExecutorService(executor);
     application.shutdown();
@@ -698,7 +698,7 @@ public class MoreExecutorsTest extends JSR166TestCase {
 
   @AndroidIncompatible // Mocking ExecutorService is forbidden there. TODO(b/218700094): Don't mock.
   public void testShutdownAndAwaitTermination_immediateShutdownInternal() throws Exception {
-    ExecutorService service = mock(ExecutorService.class);
+    ExecutorService service = mock();
     when(service.awaitTermination(HALF_SECOND_NANOS, NANOSECONDS)).thenReturn(true);
     when(service.isTerminated()).thenReturn(true);
     assertTrue(shutdownAndAwaitTermination(service, 1L, SECONDS));
@@ -708,7 +708,7 @@ public class MoreExecutorsTest extends JSR166TestCase {
 
   @AndroidIncompatible // Mocking ExecutorService is forbidden there. TODO(b/218700094): Don't mock.
   public void testShutdownAndAwaitTermination_forcedShutDownInternal() throws Exception {
-    ExecutorService service = mock(ExecutorService.class);
+    ExecutorService service = mock();
     when(service.awaitTermination(HALF_SECOND_NANOS, NANOSECONDS))
         .thenReturn(false)
         .thenReturn(true);
@@ -721,7 +721,7 @@ public class MoreExecutorsTest extends JSR166TestCase {
 
   @AndroidIncompatible // Mocking ExecutorService is forbidden there. TODO(b/218700094): Don't mock.
   public void testShutdownAndAwaitTermination_nonTerminationInternal() throws Exception {
-    ExecutorService service = mock(ExecutorService.class);
+    ExecutorService service = mock();
     when(service.awaitTermination(HALF_SECOND_NANOS, NANOSECONDS))
         .thenReturn(false)
         .thenReturn(false);
@@ -733,7 +733,7 @@ public class MoreExecutorsTest extends JSR166TestCase {
 
   @AndroidIncompatible // Mocking ExecutorService is forbidden there. TODO(b/218700094): Don't mock.
   public void testShutdownAndAwaitTermination_interruptedInternal() throws Exception {
-    final ExecutorService service = mock(ExecutorService.class);
+    final ExecutorService service = mock();
     when(service.awaitTermination(HALF_SECOND_NANOS, NANOSECONDS))
         .thenThrow(new InterruptedException());
 

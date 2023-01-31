@@ -105,7 +105,7 @@ public abstract class AbstractClosingFutureTest extends TestCase {
   final Waiter waiter = new Waiter();
   final CountDownLatch futureCancelled = new CountDownLatch(1);
   final Exception exception = new Exception();
-  final Closeable mockCloseable = Mockito.mock(Closeable.class);
+  final Closeable mockCloseable = Mockito.mock();
 
   @Override
   protected void tearDown() throws Exception {

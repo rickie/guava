@@ -208,7 +208,7 @@ public class ForwardingMapTest extends TestCase {
 
   public void testStandardEntrySet() throws InvocationTargetException {
     @SuppressWarnings("unchecked")
-    final Map<String, Boolean> map = mock(Map.class);
+    final Map<String, Boolean> map = mock();
 
     Map<String, Boolean> forward =
         new ForwardingMap<String, Boolean>() {
@@ -241,7 +241,7 @@ public class ForwardingMapTest extends TestCase {
 
   public void testStandardKeySet() throws InvocationTargetException {
     @SuppressWarnings("unchecked")
-    final Map<String, Boolean> map = mock(Map.class);
+    final Map<String, Boolean> map = mock();
 
     Map<String, Boolean> forward =
         new ForwardingMap<String, Boolean>() {
@@ -269,7 +269,7 @@ public class ForwardingMapTest extends TestCase {
 
   public void testStandardValues() throws InvocationTargetException {
     @SuppressWarnings("unchecked")
-    final Map<String, Boolean> map = mock(Map.class);
+    final Map<String, Boolean> map = mock();
 
     Map<String, Boolean> forward =
         new ForwardingMap<String, Boolean>() {

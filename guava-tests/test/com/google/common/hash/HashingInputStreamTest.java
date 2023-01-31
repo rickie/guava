@@ -39,8 +39,8 @@ public class HashingInputStreamTest extends TestCase {
   @Override
   protected void setUp() throws Exception {
     super.setUp();
-    hasher = mock(Hasher.class);
-    hashFunction = mock(HashFunction.class);
+    hasher = mock();
+    hashFunction = mock();
     buffer = new ByteArrayInputStream(testBytes);
 
     when(hashFunction.newHasher()).thenReturn(hasher);

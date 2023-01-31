@@ -69,7 +69,7 @@ public class FlushablesTest extends TestCase {
   // Set up a flushable to expect to be flushed, and optionally to
   // throw an exception.
   private void setupFlushable(boolean shouldThrowOnFlush) throws IOException {
-    mockFlushable = mock(Flushable.class);
+    mockFlushable = mock();
     if (shouldThrowOnFlush) {
       doThrow(
               new IOException(

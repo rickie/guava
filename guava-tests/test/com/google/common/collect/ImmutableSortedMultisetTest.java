@@ -605,7 +605,7 @@ public class ImmutableSortedMultisetTest extends TestCase {
 
     // Test that toArray() is used to make a defensive copy in copyOf(), so concurrently modified
     // synchronized collections can be safely copied.
-    SortedMultiset<String> toCopy = mock(SortedMultiset.class);
+    SortedMultiset<String> toCopy = mock();
     TestHashSet<Entry<String>> entrySet = new TestHashSet<>();
     when((Comparator<Comparable<String>>) toCopy.comparator())
         .thenReturn(Ordering.<Comparable<String>>natural());
