@@ -107,7 +107,7 @@ public class ConcurrentHashMultisetTest extends TestCase {
   @SuppressWarnings("unchecked")
   @Override
   protected void setUp() {
-    backingMap = mock(ConcurrentMap.class);
+    backingMap = mock();
     when(backingMap.isEmpty()).thenReturn(true);
 
     multiset = new ConcurrentHashMultiset<>(backingMap);

@@ -91,7 +91,7 @@ public class CloseablesTest extends TestCase {
   // Set up a closeable to expect to be closed, and optionally to throw an
   // exception.
   private void setupCloseable(boolean shouldThrow) throws IOException {
-    mockCloseable = mock(Closeable.class);
+    mockCloseable = mock();
     if (shouldThrow) {
       doThrow(new IOException("This should only appear in the logs. It should not be rethrown."))
           .when(mockCloseable)

@@ -569,7 +569,7 @@ public class RateLimiterTest extends TestCase {
    * changed to support this).
    */
   public void testMockingMockito() throws Exception {
-    RateLimiter mock = Mockito.mock(RateLimiter.class);
+    RateLimiter mock = Mockito.mock();
     for (Method method : RateLimiter.class.getMethods()) {
       if (!isStatic(method.getModifiers())
           && !NOT_WORKING_ON_MOCKS.contains(method.getName())

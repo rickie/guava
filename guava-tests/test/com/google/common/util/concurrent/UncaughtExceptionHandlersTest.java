@@ -29,7 +29,7 @@ public class UncaughtExceptionHandlersTest extends TestCase {
 
   @Override
   protected void setUp() {
-    runtimeMock = mock(Runtime.class);
+    runtimeMock = mock();
   }
 
   public void testExiter() {
